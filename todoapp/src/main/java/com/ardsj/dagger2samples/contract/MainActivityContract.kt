@@ -8,6 +8,10 @@ interface MainActivityContract {
 
     interface Presenter{
 
+        fun createTask(title: String, description: String)
+
+        fun loadTasks()
+
     }
 
 }

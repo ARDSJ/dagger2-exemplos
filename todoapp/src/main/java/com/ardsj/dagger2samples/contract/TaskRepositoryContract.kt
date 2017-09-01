@@ -10,4 +10,6 @@ interface TaskRepositoryContract {
 
     fun deleteTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit)
 
+    fun loadTasks(actionSuccess: (tasks: List<Task>) -> Unit, actionError: (e: Exception) -> Unit)
+
 }

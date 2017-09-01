@@ -8,6 +8,22 @@ import javax.inject.Inject
 class LocalTaskRepository
     @Inject constructor(): TaskRepositoryContract{
 
+    override fun loadTasks(actionSuccess: (tasks: List<Task>) -> Unit, actionError: (e: Exception) -> Unit) {
+
+        realm.executeTransaction {
+
+            try {
+                val results = it.where(Task::class.java)
+                        .findAll()
+                actionSuccess(results.toList())
+            }catch (e: Exception){
+                actionError(e)
+            }
+
+        }
+    }
+
+
     @Inject
     lateinit var realm:Realm
 
