@@ -1,7 +1,7 @@
 package com.ardsj.dagger2samples.di.module
 
-import com.ardsj.dagger2samples.di.contract.MainActivityContract
-import com.ardsj.dagger2samples.di.presenter.MainActivityPresenter
+import com.ardsj.dagger2samples.contract.MainActivityContract
+import com.ardsj.dagger2samples.presenter.MainActivityPresenter
 import com.ardsj.dagger2samples.di.scope.ActivityScoped
 import dagger.Binds
 import dagger.Module

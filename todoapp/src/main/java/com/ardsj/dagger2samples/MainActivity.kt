@@ -1,8 +1,7 @@
 package com.ardsj.dagger2samples
 
 import android.os.Bundle
-import com.ardsj.dagger2samples.di.contract.MainActivityContract
-import dagger.android.DaggerActivity
+import com.ardsj.dagger2samples.contract.MainActivityContract
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

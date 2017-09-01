@@ -1,4 +1,4 @@
-package com.ardsj.dagger2samples.di.contract
+package com.ardsj.dagger2samples.contract
 
 interface MainActivityContract {
 
