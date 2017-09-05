@@ -6,6 +6,8 @@ interface CreateOrUpdateActivityContract {
 
     interface View: com.ardsj.dagger2samples.contract.View{
 
+        fun showTask()
+
     }
 
     interface Presenter: com.ardsj.dagger2samples.contract.Presenter {
