@@ -12,4 +12,6 @@ interface TaskRepositoryContract {
 
     fun loadTasks(actionSuccess: (tasks: List<Task>) -> Unit, actionError: (e: Exception) -> Unit)
 
+    fun loadTask(taskId: Int,actionSuccess: (tasks: Task) -> Unit, actionError: (e: Exception) -> Unit)
+
 }

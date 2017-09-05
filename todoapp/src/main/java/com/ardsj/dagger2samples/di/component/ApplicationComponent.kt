@@ -11,7 +11,8 @@ import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class
+@Component(modules = arrayOf(
+         ApplicationModule::class
         ,ActivityBindingModule::class
         ,AndroidSupportInjectionModule::class))
 interface ApplicationComponent: AndroidInjector<DaggerApplication>{

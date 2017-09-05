@@ -21,28 +21,6 @@ class MainActivityPresenter
 
     }
 
-    override fun createTask(title: String, description: String) {
-
-        val task = Task()
-
-        task.title = title
-
-        task.description = description
-
-        localTaskRepository.createTask(
-
-                task,
-                {
-
-                },
-                {
-
-                }
-
-        )
-
-    }
-
     override fun loadTasks() {
 
         localTaskRepository.loadTasks({

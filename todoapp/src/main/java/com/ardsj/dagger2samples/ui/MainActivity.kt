@@ -1,8 +1,10 @@
 package com.ardsj.dagger2samples.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import android.view.MenuItem
 import com.ardsj.dagger2samples.R
 import com.ardsj.dagger2samples.contract.MainActivityContract
 import com.ardsj.dagger2samples.entity.Task
@@ -43,6 +45,17 @@ class MainActivity : DaggerAppCompatActivity(), MainActivityContract.View{
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.new_task){
+            goToCreateOrUpdateActivity()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun goToCreateOrUpdateActivity(){
+        startActivity(Intent(this, CreateOrUpdateActivity::class.java))
     }
 
 }
