@@ -1,8 +1,10 @@
 package com.ardsj.dagger2samples.di.module
 
-import com.ardsj.dagger2samples.ui.MainActivity
+import com.ardsj.dagger2samples.component.createorupdate.CreateOrUpdateActivityModule
+import com.ardsj.dagger2samples.component.home.MainActivity
 import com.ardsj.dagger2samples.di.scope.ActivityScoped
-import com.ardsj.dagger2samples.ui.CreateOrUpdateActivity
+import com.ardsj.dagger2samples.component.home.MainActivityModule
+import com.ardsj.dagger2samples.component.createorupdate.CreateOrUpdateActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -19,7 +21,7 @@ abstract class ActivityBindingModule {
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = arrayOf(
-             MainActivityModule::class
+             CreateOrUpdateActivityModule::class
             ,PersistenceModule::class
             ,LocalRepositoryModule::class
     ))

@@ -17,8 +17,6 @@ import javax.inject.Singleton
         ,AndroidSupportInjectionModule::class))
 interface ApplicationComponent: AndroidInjector<DaggerApplication>{
 
-    override fun inject(instance: DaggerApplication)
-
     @Component.Builder
     interface Builder {
 

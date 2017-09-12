@@ -1,7 +1,5 @@
-package com.ardsj.dagger2samples.presenter
+package com.ardsj.dagger2samples.component.createorupdate
 
-import com.ardsj.dagger2samples.contract.CreateOrUpdateActivityContract
-import com.ardsj.dagger2samples.contract.MainActivityContract
 import com.ardsj.dagger2samples.contract.TaskRepositoryContract
 import com.ardsj.dagger2samples.contract.View
 import com.ardsj.dagger2samples.entity.Task
@@ -9,14 +7,15 @@ import javax.inject.Inject
 
 class CreateOrUpdateActivityPresenter
 @Inject constructor(): CreateOrUpdateActivityContract.Presenter {
+
     @Inject
     lateinit var localTaskRepository: TaskRepositoryContract
 
-    var view: MainActivityContract.View? = null
+    var view: CreateOrUpdateActivityContract.View? = null
 
     override fun takeView(view: View) {
 
-        this.view = view as MainActivityContract.View
+        this.view = view as CreateOrUpdateActivityContract.View
 
     }
 
@@ -24,7 +23,7 @@ class CreateOrUpdateActivityPresenter
 
         localTaskRepository.loadTask(taskId,
                 {
-
+                    view?.showTask(it)
                 },
                 {
 
@@ -33,21 +32,24 @@ class CreateOrUpdateActivityPresenter
 
     }
 
-    override fun createOrUpdateTask(title: String, description: String) {
+    override fun createOrUpdateTask(taskId: String? ,title: String, description: String) {
 
         val task = Task()
+
+        if(!taskId.isNullOrBlank())
+            task.id = taskId
 
         task.title = title
 
         task.description = description
 
-        localTaskRepository.createTask(
+        localTaskRepository.createOrUpdateTask(
                 task,
                 {
-
+                    view?.onTaskSavedSuccessfully()
                 },
                 {
-
+                    view?.onTaskSavedError(it)
                 }
 
         )

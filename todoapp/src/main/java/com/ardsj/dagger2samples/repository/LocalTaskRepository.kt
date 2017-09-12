@@ -39,7 +39,7 @@ class LocalTaskRepository
         }
     }
 
-    override fun createTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
+    override fun createOrUpdateTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
 
         realm.executeTransaction {
 
@@ -52,21 +52,6 @@ class LocalTaskRepository
 
                 actionError(e)
 
-            }
-
-        }
-
-    }
-
-    override fun updateTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
-
-        realm.executeTransaction {
-
-            try {
-                it.copyToRealmOrUpdate(task)
-                actionSuccess()
-            }catch (e: Exception){
-                actionError(e)
             }
 
         }

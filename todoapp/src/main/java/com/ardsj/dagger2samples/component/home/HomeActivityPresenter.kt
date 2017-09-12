@@ -1,23 +1,21 @@
-package com.ardsj.dagger2samples.presenter
+package com.ardsj.dagger2samples.component.home
 
-import com.ardsj.dagger2samples.contract.MainActivityContract
 import com.ardsj.dagger2samples.contract.TaskRepositoryContract
 import com.ardsj.dagger2samples.contract.View
-import com.ardsj.dagger2samples.entity.Task
 import javax.inject.Inject
 
 
-class MainActivityPresenter
-@Inject constructor(): MainActivityContract.Presenter {
+class HomeActivityPresenter
+@Inject constructor(): HomeActivityContract.Presenter {
 
     @Inject
     lateinit var localTaskRepository: TaskRepositoryContract
 
-    var view: MainActivityContract.View? = null
+    var view: HomeActivityContract.View? = null
 
     override fun takeView(view: View) {
 
-        this.view = view as MainActivityContract.View
+        this.view = view as HomeActivityContract.View
 
     }
 
