@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class HomeActivityListAdapter
 @Inject
-constructor(): RecyclerView.Adapter<MainActivityListViewHolder>() {
+constructor(): RecyclerView.Adapter<HomeActivityListViewHolder>() {
 
     @Inject
     lateinit var inflater: LayoutInflater
@@ -35,15 +35,15 @@ constructor(): RecyclerView.Adapter<MainActivityListViewHolder>() {
         dataStore.clear()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MainActivityListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeActivityListViewHolder {
 
         val view = inflater.inflate(R.layout.activity_main_list_item, null)
 
-        return MainActivityListViewHolder(view)
+        return HomeActivityListViewHolder(view)
 
     }
 
-    override fun onBindViewHolder(holder: MainActivityListViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: HomeActivityListViewHolder?, position: Int) {
 
         val task = dataStore[position]
 

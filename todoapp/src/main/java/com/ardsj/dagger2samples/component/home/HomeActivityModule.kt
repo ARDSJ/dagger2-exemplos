@@ -10,7 +10,7 @@ abstract class HomeActivityModule {
 
     @ActivityScoped
     @Binds
-    abstract fun presenter(presenter: MainActivityPresenter): HomeActivityContract.Presenter
+    abstract fun presenter(presenter: HomeActivityPresenter): HomeActivityContract.Presenter
 
     @ActivityScoped
     @MainActivityAdapter
