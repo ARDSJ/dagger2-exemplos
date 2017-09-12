@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.ardsj.dagger2samples.component.home.MainActivity">
+        <activity android:name="com.ardsj.dagger2samples.component.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName="com.ardsj.dagger2samples.component.home.MainActivity"
+            android:parentActivityName="com.ardsj.dagger2samples.component.home.HomeActivity"
             android:name="com.ardsj.dagger2samples.component.createorupdate.CreateOrUpdateActivity"/>
     </application>
 
