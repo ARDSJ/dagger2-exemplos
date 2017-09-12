@@ -1,10 +1,10 @@
-package com.ardsj.dagger2samples.contract
+package com.ardsj.dagger2samples.component.home
 
 import com.ardsj.dagger2samples.entity.Task
 
-interface MainActivityContract {
+interface HomeActivityContract {
 
-    interface View: com.ardsj.dagger2samples.contract.View{
+    interface View: com.ardsj.dagger2samples.contract.View {
 
         fun showTasksInList(taskList: List<Task>)
 
@@ -13,8 +13,6 @@ interface MainActivityContract {
     }
 
     interface Presenter: com.ardsj.dagger2samples.contract.Presenter {
-
-        fun createTask(title: String, description: String)
 
         fun loadTasks()
 

@@ -1,4 +1,4 @@
-package com.ardsj.dagger2samples.ui.adapter
+package com.ardsj.dagger2samples.component.home
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ardsj.dagger2samples.R
 import com.ardsj.dagger2samples.entity.Task
-import com.ardsj.dagger2samples.ui.holder.MainActivityListViewHolder
 import kotlinx.android.synthetic.main.activity_main_list_item.view.*
 import javax.inject.Inject
 
-class MainActivityListAdapter
+class HomeActivityListAdapter
 @Inject
-constructor(): RecyclerView.Adapter<MainActivityListViewHolder>() {
+constructor(): RecyclerView.Adapter<HomeActivityListViewHolder>() {
 
     @Inject
     lateinit var inflater: LayoutInflater
@@ -32,15 +31,19 @@ constructor(): RecyclerView.Adapter<MainActivityListViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MainActivityListViewHolder {
+    fun clear(){
+        dataStore.clear()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): HomeActivityListViewHolder {
 
         val view = inflater.inflate(R.layout.activity_main_list_item, null)
 
-        return MainActivityListViewHolder(view)
+        return HomeActivityListViewHolder(view)
 
     }
 
-    override fun onBindViewHolder(holder: MainActivityListViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: HomeActivityListViewHolder?, position: Int) {
 
         val task = dataStore[position]
 

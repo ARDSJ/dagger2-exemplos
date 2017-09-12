@@ -8,6 +8,22 @@ import javax.inject.Inject
 class LocalTaskRepository
     @Inject constructor(): TaskRepositoryContract{
 
+    @Inject
+    lateinit var realm:Realm
+
+    override fun loadTask(taskId: Int, actionSuccess: (tasks: Task) -> Unit, actionError: (e: Exception) -> Unit) {
+
+        realm.executeTransaction {
+            try {
+                val task = it.where(Task::class.java).equalTo("id", taskId).findFirst()
+                actionSuccess(task)
+            }catch (e: Exception){
+                actionError(e)
+            }
+        }
+
+    }
+
     override fun loadTasks(actionSuccess: (tasks: List<Task>) -> Unit, actionError: (e: Exception) -> Unit) {
 
         realm.executeTransaction {
@@ -23,11 +39,7 @@ class LocalTaskRepository
         }
     }
 
-
-    @Inject
-    lateinit var realm:Realm
-
-    override fun createTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
+    override fun createOrUpdateTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
 
         realm.executeTransaction {
 
@@ -40,21 +52,6 @@ class LocalTaskRepository
 
                 actionError(e)
 
-            }
-
-        }
-
-    }
-
-    override fun updateTask(task: Task, actionSuccess: () -> Unit, actionError: (e: Exception) -> Unit) {
-
-        realm.executeTransaction {
-
-            try {
-                it.copyToRealmOrUpdate(task)
-                actionSuccess()
-            }catch (e: Exception){
-                actionError(e)
             }
 
         }
