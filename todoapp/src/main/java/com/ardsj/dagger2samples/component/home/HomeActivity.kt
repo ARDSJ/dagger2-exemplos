@@ -12,13 +12,13 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class HomeActivity : DaggerAppCompatActivity(), MainActivityContract.View{
+class HomeActivity : DaggerAppCompatActivity(), HomeActivityContract.View{
 
     @Inject
-    lateinit var presenter: MainActivityContract.Presenter
+    lateinit var presenter: HomeActivityContract.Presenter
 
     @Inject
-    lateinit var adapter: MainActivityListAdapter
+    lateinit var adapter: HomeActivityListAdapter
 
     override fun showTasksInList(taskList: List<Task>) {
         adapter.add(taskList)
